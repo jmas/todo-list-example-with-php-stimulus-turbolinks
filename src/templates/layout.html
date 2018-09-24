@@ -2,12 +2,13 @@
 <html>
     <head>
         {% block head %}
-            <link rel="stylesheet" href="style.css" />
             <title>{% block title %}{% endblock %} - My Webpage</title>
+            <script defer src="app.js"></script>
         {% endblock %}
-        <script defer src="app.js"></script>
     </head>
     <body>
-        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>
