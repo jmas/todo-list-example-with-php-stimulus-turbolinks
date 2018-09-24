@@ -21,11 +21,9 @@ $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templates', [
         // 'cache' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'templates_cache'
     ]);
-
     // Instantiate and add Slim specific extension
     $basePath = rtrim(str_ireplace('index.php', '', $container->get('request')->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container->get('router'), $basePath));
-
     return $view;
 };
 
@@ -41,14 +39,14 @@ $app->get('/todos', function (Request $req,  Response $res, $args = []) {
 
 $app->post('/todos', function (Request $req,  Response $res, $args = []) {
     $_SESSION['todos'][] = $req->getParsedBody() + [ 'id' => uniqid() ];
-    return $res->withStatus(200)->withRedirect($this->get('router')->pathFor('todosHome'), 301);
+    return $res->withRedirect($this->get('router')->pathFor('todosHome'), 301);
 })->setName('addTodo');
 
 $app->post('/todos/{id}', function (Request $req,  Response $res, $args = []) {
     $_SESSION['todos'] = array_filter($_SESSION['todos'], function($item) use ($args) {
         return $item['id'] !== $args['id'];
     });
-    return $res->withStatus(200)->withRedirect($this->get('router')->pathFor('todosHome'), 301);
+    return $res->withRedirect($this->get('router')->pathFor('todosHome'), 301);
 })->setName('deleteTodo');
 
 $app->run();
