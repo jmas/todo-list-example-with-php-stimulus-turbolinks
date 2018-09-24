@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Todo App{% endblock %}
+
+{% block content %}
+    <h1>Todo App</h1>
+    
+    {% include 'todo_form.html' %}
+
+    <hr />
+
+    {% include 'todo_list.html' %}
+{% endblock %}

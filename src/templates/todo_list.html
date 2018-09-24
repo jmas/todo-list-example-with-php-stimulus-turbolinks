@@ -1,0 +1,10 @@
+<ul data-controller="todo-list">
+    {% for todo in todos %}
+        <li>
+            {{ todo.id|e }} {{ todo.text|e }}
+            <form action="{{ path_for('deleteTodo', { 'id': todo.id }) }}" method="post" data-action="todo-list#delete">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
