@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "format": "prettier --single-quote --write {*.js,src/*.js,src/**/*.js,,src/**/**/*.js}"
+    "format": "prettier --single-quote --write {*.js,src/*.js,src/**/*.js,src/**/**/*.js}"
   },
   "devDependencies": {
     "prettier": "1.14.3"
